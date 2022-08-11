@@ -1,0 +1,31 @@
+Helllo World
+
+<div *ngIf="!showTranslate">
+  <form [formGroup]="firstFormGroup">
+    <mat-form-field appearance="outline" translate="no">
+      <mat-label>Select Language</mat-label>
+      <mat-select
+        formControlName="languageControl"
+        (selectionChange)="onlanguagechange()"
+        translate="no"
+      >
+        <mat-option
+          translate="no"
+          *ngFor="let lang of googleLanguage"
+          [value]="lang.value"
+        >
+          {{ lang.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+
+<span (click)="showbtn()">
+  <ng-container *ngIf="showTranslate; else translateClose">
+    <mat-icon>g_translate</mat-icon>
+  </ng-container>
+  <ng-template #translateClose>
+    <mat-icon>close</mat-icon>
+  </ng-template>
+</span>
